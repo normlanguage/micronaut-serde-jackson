@@ -1,11 +1,11 @@
 Module module() {
   return module(
     name: "micronaut.serde.jackson",
-    version: 1,
+    version: 2,
     dependencies: [
-      dependency(repository: "github", name: "micronaut.serde.api", version: 1),
-      dependency(repository: "github", name: "micronaut.json", version: 1),
-      dependency(repository: "github", name: "micronaut.inject", version: 1)
+      dependency(repository: "github", name: "micronaut.serde.api", version: 2),
+      dependency(repository: "github", name: "micronaut.json", version: 2),
+      dependency(repository: "github", name: "micronaut.inject", version: 2)
     ],
     binding: jarBinding(
       target: mavenJar(
