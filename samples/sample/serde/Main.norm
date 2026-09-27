@@ -17,13 +17,10 @@ class Message {
 }
 
 Void main() {
-  ObjectMapper? mapper = objectMapperGetDefault()
-  if mapper != null {
-    String json = mapper.writeValueAsString(Message(text: "Norm")) ?? "missing"
-    Message? decoded = mapper.readValue<Message>(arg0: json, arg1: Message.class)
-    printLine(json)
-    if decoded != null {
-      printLine(decoded.text)
-    }
-  }
+  ObjectMapper mapper = objectMapperGetDefault()!!
+  String json = mapper.writeValueAsString(Message(text: "Norm"))!!
+  Message decoded = mapper.readValue<Message>(arg0: json, arg1: Message.class)!!
+  require(condition: decoded.text == "Norm", message: "Typed JSON round trip lost the message")
+  printLine(json)
+  printLine(decoded.text)
 }
