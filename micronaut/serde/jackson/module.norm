@@ -10,12 +10,13 @@ Module module() {
       target: mavenJar(
         group: "io.micronaut.serde",
         artifact: "micronaut-serde-jackson",
-        version: "3.2.6", resolution: sha256("f2bdf0e8dc88b47be1e4483cb1edd70dbe39f867140cb8b27e5872db9af57e03")
+        version: "3.2.6", resolution: sha256("3705dc9ee943dd62cd6eb14eb88a4857f15e9daf9ff675300634b7fcd5050e7a")
       ),
       api: []
     )
   )
 }
+
 
 
 
