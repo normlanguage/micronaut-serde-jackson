@@ -1,7 +1,7 @@
 Module module() {
   return module(
     name: "micronaut.serde.jackson",
-    version: 6,
+    version: 7,
     dependencies: [
       dependency(repository: "github", name: "micronaut.json", version: 5),
       dependency(repository: "github", name: "micronaut.inject", version: 15)
@@ -16,4 +16,5 @@ Module module() {
     )
   )
 }
+
 
