@@ -1,7 +1,7 @@
 Module module() {
   return module(
     name: "micronaut.serde.jackson",
-    version: 7,
+    version: 8,
     dependencies: [
       dependency(repository: "github", name: "micronaut.json", version: 5),
       dependency(repository: "github", name: "micronaut.inject", version: 15)
@@ -10,11 +10,12 @@ Module module() {
       target: mavenJar(
         group: "io.micronaut.serde",
         artifact: "micronaut-serde-jackson",
-        version: "3.1.1", resolution: sha256("474f6f0b0222f4ea097b0947c61aeed54021aa7b9574590ac8215b38b12c93c9")
+        version: "3.2.6", resolution: sha256("f2bdf0e8dc88b47be1e4483cb1edd70dbe39f867140cb8b27e5872db9af57e03")
       ),
       api: []
     )
   )
 }
+
 
 
