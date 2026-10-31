@@ -1,0 +1,36 @@
+name: Acceptance
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Resolve Norm toolchain
+        id: toolchain
+        run: |
+          version=$(sed -n 's/^      norm-version: //p' .github/workflows/package.yml)
+          test -n "$version"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+      - uses: normlanguage/registry/.github/actions/setup-norm@581776aacb8d214de3a9fb30ec2abb4f422c89bb
+        with:
+          version: ${{ steps.toolchain.outputs.version }}
+      - name: Reset package cache
+        run: rm -rf "$HOME/.norm/cache/packages/github"
+      - name: Package current module
+        run: |
+          norm package micronaut/serde/jackson/module.norm --output build/repository
+          mkdir -p "$HOME/.norm/cache/packages/github"
+          cp -R build/repository/. "$HOME/.norm/cache/packages/github/"
+      - name: Verify package behavior
+        run: norm run samples/sample/serde/Main.norm
+
+
